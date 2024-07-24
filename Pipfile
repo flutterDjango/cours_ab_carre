@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+wagtail = "*"
+psycopg = {extras = ["binary"], version = "*"}
+wagtail-markdown = "*"
+wagtail-django-recaptcha = "*"
+
+[dev-packages]
+django-browser-reload = "*"
+
+[requires]
+python_version = "3.11"

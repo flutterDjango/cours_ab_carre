@@ -1,0 +1,121 @@
+
+.questions-section {
+    position: relative;
+    /* padding: 0 10px 62px; */
+    padding-top: 250px;
+    background-image: var(--striped-blue-orange); 
+    z-index: -1;
+  }
+
+/*  
+.large-question-container {
+    transform: translateY(0px);
+    background-color: var(--light-white);
+    border-radius: 25px;
+    padding: 40px 25px 20px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    z-index: 0;
+  }  */
+
+/* 
+  
+.question-container {
+    width: 80%;
+    margin: 0 auto;
+   
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    padding: 25px;
+
+    background-color: var(--light-gray);
+    margin-bottom: 20px;
+    
+    font-family: var(--base-font);
+    color: var(--dark-base);
+    line-height: 1.4;
+  } */
+
+
+  .narrow-container ul {
+    padding-left: 25px; 
+    /* list-style-position: inside; */
+    list-style-type: circle;
+  }
+
+
+  
+
+/* 
+.block-markdown {
+  color: green;
+} */
+
+
+
+.block-markdown ul {
+  padding-left: 25px; 
+  /* list-style-position: inside; */
+  list-style-type: circle;
+}
+
+
+
+.block-markdown {
+ 
+  margin: 0 auto;
+  
+  border-radius: 25px;
+  box-shadow: var(--shadow-sm);
+  padding: 5px;
+
+  background-color: var(--light-gray);
+  margin-bottom: 5px;
+  /* color: var(--light-white); */
+  font-family: var(--base-font);
+  color: var(--dark-base);
+  line-height: 1.4;
+}
+
+  @media (max-width: 950px) {
+    
+    .questions-section {
+      position: relative;
+      /* padding: 0 10px 62px; */
+      padding-top: 380px;
+      /* background-image: var(--striped-pinky);  */
+      z-index: -1;
+    }
+    
+    .narrow-container {
+      width: 100%;
+      /* padding: 25px; */
+      margin: 0 auto 20px auto;
+      /* margin-bottom: 20px; */
+    }
+}
+
+  
+  @media (max-width: 630px) {
+    
+    .questions-section {
+     
+      position: relative;
+      padding-top: 400px;
+      /* background-image: var(--striped-pinky);  */
+      z-index: -1;
+  
+    }
+
+    .narrow-container {
+      width: 100%;
+      padding: 25px; 
+      margin-bottom: 20px;
+      /* margin: 0 auto; */
+    }
+        
+    .block-markdown ul {
+      padding-left: 15px; 
+      list-style-type: circle;
+    }
+  }

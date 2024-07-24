@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+
+{% block content %}
+
+
+<section class="commun-section">
+    <div class="large-container container">
+        <h1 class="heading-2-dark">
+            Qui suis-je ?
+        </h1>
+        <div class="narrow-container">
+            {{ page.about_text|richtext }}
+    </div>
+    
+</section>
+
+{% endblock %}

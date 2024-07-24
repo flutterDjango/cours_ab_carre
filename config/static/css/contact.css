@@ -1,0 +1,52 @@
+
+
+
+.contact-page{
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    padding: 25px;
+
+    background-color: var(--light-gray);
+    margin-bottom: 20px;
+    /* color: var(--light-white); */
+    font-family: var(--base-font);
+    color: var(--dark-base);
+    line-height: 1.4;
+
+}
+
+
+#id_wagtailcaptcha{
+  background-color: var(--light-gray);
+  border-color: var(--light-gray);
+  margin-bottom: 15px;
+  /* display: flex;
+  justify-content: center; */
+} 
+
+/* 
+.row{
+  margin-left: 10px;
+} */
+
+.field_required {
+  color: red;
+}
+.mention {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+input, textarea{
+  width: 50%;
+}
+
+
+@media (max-width: 950px) {
+  
+input, textarea{
+  width: 100%;
+}
+}

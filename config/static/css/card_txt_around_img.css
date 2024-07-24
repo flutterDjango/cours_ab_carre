@@ -1,0 +1,90 @@
+
+  .card-me-section{
+    /* background-color:  var(--light-white);
+    background-color: red;
+    padding-top: 10px;
+    padding-bottom: 10px; */
+    position: relative;
+    
+  } 
+  .text-portrait {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    max-width: 600px;
+    background-color: var(--light-gray);
+    /* background: #f1f1f1; */
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+  }
+
+  
+
+  /* hauteur minimale de la carte lorsque le texte est trop court */
+  .text-portrait::after {
+    content:"";
+    display: block;
+    clear: both;
+  }
+  .text-portrait h2 {
+    margin-bottom: 10px;
+  }
+
+  .text-portrait p {
+    line-height: 1.4;
+  }
+
+  .portrait {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: var(--light-white);
+    float: left;
+    shape-outside: margin-box;
+    margin: 0 20px 5px 0;
+  }
+
+  .text {
+    margin-top: 25px;
+    font-family: var(--base-font);
+    color: var(--dark-base)
+  }
+
+  
+  .text p {
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+
+  }
+
+
+  
+  @media (max-width: 950px) {
+    .card-me-section{
+      
+      position: relative;
+      
+    } 
+    .text-portrait {
+      position: absolute;
+      top: 10px;
+      right: 50%;
+      transform: translate(50%);
+      display: flex;
+      flex-direction: column;
+  }
+  .text-portrait h2 {
+    margin-bottom: 10px;
+  }
+
+  .text-portrait p {
+    line-height: 1.4;
+    margin-top: 2px;
+    margin-bottom: 5px;
+  }
+
+}

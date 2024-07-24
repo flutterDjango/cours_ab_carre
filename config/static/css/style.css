@@ -1,0 +1,73 @@
+@import url("variables.css");
+@import url("globals.css");
+@import url("nav.css");
+@import url("questions.css");
+@import url("card_txt_around_img.css");
+@import url("testimonials.css");
+@import url("contact.css");
+/* 
+.contact-form {
+    color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.contact-form label{
+    color:blue;
+}
+
+.contact-form input{
+    border-radius: 10px;
+    color:blue;
+}
+.contact-form fieldset legend{
+    color: green;
+}
+
+.contact-form fieldset .helptext{
+    color: orange;
+}
+
+
+.contact-form fieldset{
+    border: 2px solid gray;
+    padding: 1em;
+    margin-bottom: 20px;
+
+}
+#id_quelle_est_votre_couleur_de_chat_preferee{
+    display: flex;
+    justify-content: space-between;
+}
+  */
+
+/* 
+
+#div_id_message{
+    background-color: yellow;
+} 
+
+
+#id_message{
+    background-color: yellow;
+}  */
+
+/* iframe{
+    
+    background-color:red;
+   
+} */
+/* 
+.row{
+    margin-left: 20px;
+}
+
+.field_required {
+    color: red;
+}
+.mention {
+    margin-top: 15px;
+    margin-bottom: 5px;
+} */

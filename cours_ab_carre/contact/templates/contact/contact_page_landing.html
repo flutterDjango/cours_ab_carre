@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+
+{% block content %}
+<section class="commun-section">
+    <div class="large-container container">
+        <div class="narrow-container">
+            {{ page.thank_you_text|richtext }}
+        </div>
+    </div>
+</section>
+{% endblock %}

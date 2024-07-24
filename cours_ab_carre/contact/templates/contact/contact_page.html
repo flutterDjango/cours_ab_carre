@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% load static %}
+
+{% block content %}
+    <section class="commun-section">
+        <div class="large-container container">
+            <h1 class="heading-2-dark">
+                Contact
+            </h1>
+            <div class="narrow-container">
+                {{ page.body|richtext }}
+                <form action="{% pageurl page %}" method='post'>
+                    {% csrf_token %}
+                    {% for field in form %}
+                    
+                    <div class="row">
+                        <label for="{{ field.name }}">{{ field.label }}
+                            {% if field.name != 'wagtailcaptcha' %}
+                                {% if field.field.required %}
+                                    <span class="field_required">*</span>
+                                {% endif %}
+                            {% endif %}
+                        </label>
+                        <div class="text-field">
+                            {{ field }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                  
+                    <button type="submit" class="button">Envoyer</button>
+                </form>
+                <p class='mention'><span class="field_required">*</span> champ obligatoire</p>
+                <p>Nous n'utiliserons vos données que pour assurer le traitement de vos demandes.</p>
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}

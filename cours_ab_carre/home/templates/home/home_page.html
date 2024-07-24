@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% comment %} {% block body_class %}template-homepage{% endblock %} {% endcomment %}
+
+{% block extra_css %}
+
+{% comment %}
+Delete the line below if you're just getting started and want to remove the welcome screen!
+{% endcomment %}
+{% comment %} <link rel="stylesheet" href="{% static 'css/welcome_page.css' %}"> {% endcomment %}
+{% endblock extra_css %}
+
+{% block hero %}
+
+{% comment %} <img src="{% static 'images/sinwave_blue.svg'%}" alt=""/> {% endcomment %}
+{% endblock %} 
+{% block content %}
+    <section class="card-me-section">
+        <div class="text-portrait">
+            <img class="portrait" src="{% static 'images/moi-4fondTransparent640-612-300x287.png'%}" alt=""/> 
+            <div class="text">
+                <h2>Philippe Maury</h2>
+                <p>Professeur de maths et de physique indépendant depuis 2004.</p>
+                <a href="/qui-suis-je/" class="button">En savoir plus</a>
+
+            </div>
+            
+        </div>
+    </section>
+    <section class="questions-section">
+        <div class="large-container container">
+        {% comment %} <p class="surtitle">Activités populaires</p> {% endcomment %}
+        <h2 class="heading-2-dark">Comprendre avec mes 4 questions en or.</h2>
+        {% for block in page.questions_content %}
+            {% if block.block_type == "markdown_question" %}    
+            <div class="narrow-container">
+                {{block}}
+            </div>
+                {% comment %} {% include_block block with even=forloop.counter%}  {% endcomment %}
+            {% endif %}
+        {% endfor %}
+        {% for block in page.text %}
+            {% if block.block_type == "text" %} 
+                {% include_block block with even=forloop.counter%}
+            {% endif %}
+        {% endfor %}
+        </div>
+    </section>
+    <section class="testimonials-section">
+        {% comment %} <h2 class="heading-2-dark">Témoignages.</h2> {% endcomment %}
+        <div class="card-container">
+        {% for block in page.testimonials %}
+
+            {% if block.block_type == "testimonials" %} 
+                {% include_block block with even=forloop.counter%}
+            {% endif %}
+        {% endfor %}
+        </div>
+    </section>
+{% endblock content %}
