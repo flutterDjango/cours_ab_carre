@@ -1,30 +1,38 @@
 .hero {
   min-height: 25vh;
   width: 100%;
-  background-image: var(--blue-gradient);
+  background-image: var(--black-blue-gradient);
+  
 
   /* position: relative;   */
   display: flex;
+  justify-content: space-evenly ; 
+  align-items: center;
 
 }
 
  
 .logo {
-  margin: auto auto; 
+  
+  /* margin: auto auto;   */
 } 
 
 
 .title {
-  margin: auto auto;
+  
+  /* margin: auto auto; */
 }
 
 nav {
+  
   z-index: 10;
   border-bottom: var(--light-dark-border);
   background-image: var(--dark-right);
   padding-top: 10px;
   padding-bottom: 5px;
-  position: relative;
+ 
+  /* width: 100%; */
+  /* position: relative;  */
   }
 nav a {
   text-decoration: none;
@@ -42,6 +50,7 @@ nav a:hover {
 .items {
   text-align: end;
   margin-right: 50px;
+  
 }
 /* 
 .items {

@@ -3,7 +3,7 @@
     position: relative;
     /* padding: 0 10px 62px; */
     padding-top: 250px;
-    background-image: var(--striped-blue-orange); 
+    background-image: var(--striped-black-blue); 
     z-index: -1;
   }
 

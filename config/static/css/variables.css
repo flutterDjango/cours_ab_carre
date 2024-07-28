@@ -16,6 +16,7 @@
 
 /* gradiants */
 --blue-gradient : linear-gradient(to bottom, #357cf6, #90bbda);
+--black-blue-gradient : linear-gradient(to bottom,  #656565, #90bbda);
 --dark-right : linear-gradient(to bottom right, #252525, #383838);
 
 --striped-pinky: repeating-linear-gradient(
@@ -39,6 +40,17 @@
     linear-gradient(to right,  #357cf6, #90bbda);
 
 
+
+--striped-black-blue: repeating-linear-gradient(
+      135deg,
+      rgba(106, 100, 100, 0.1) 0px,
+      rgba(106, 100, 100, 0.1) 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    linear-gradient(to right,  #656565, #90bbda);
+
+
 --striped-blue-orange: repeating-linear-gradient(
       135deg,
       rgba(106, 100, 100, 0.1) 0px,
@@ -46,7 +58,7 @@
       transparent 2px,
       transparent 4px
     ),
-    linear-gradient(to right,  #90bbda, #f4e0bb);
+    linear-gradient(to right,  #90bbda, #f4e0bb); 
 /* 
 color: #44779f;
 
