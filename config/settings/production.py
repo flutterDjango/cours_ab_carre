@@ -1,8 +1,24 @@
-from .base import *
+from .base import BASE_DIR, env
+from pathlib import Path
 
-DEBUG = False
+DEBUG = env('DEBUG')
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+SECRET_KEY = env('SECRET_KEY')
+DATABASES = {
+    'default': env.db(),
+}
 
-try:
-    from .local import *
-except ImportError:
-    pass
+BASE_DIR = Path(BASE_DIR)
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Security settings
+SECURE_HSTS_SECONDS = 31536000
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+X_FRAME_OPTIONS = "DENY"
+SECURE_SSL_REDIRECT = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_REFERRER_POLICY = "no-referrer-when-downgrade"
+
+WAGTAIL_REDIRECTS_FILE_STORAGE = "cache"
