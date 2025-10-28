@@ -5,8 +5,16 @@ DEBUG = env('DEBUG')
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 SECRET_KEY = env('SECRET_KEY')
 DATABASES = {
-    'default': env.db(),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": env("POSTGRES_DB"),
+        "USER": env("POSTGRES_USER"),
+        "PASSWORD": env("POSTGRES_PASSWORD"),
+        "HOST": env("POSTGRES_HOST"),
+        "PORT": env("POSTGRES_PORT"),
+    }
 }
+
 
 BASE_DIR = Path(BASE_DIR)
 STATIC_ROOT = BASE_DIR / 'staticfiles'
