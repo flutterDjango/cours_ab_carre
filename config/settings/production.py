@@ -1,7 +1,7 @@
-from .base import BASE_DIR, env
+from .base import * # noqa
 from pathlib import Path
 
-DEBUG = env('DEBUG')
+DEBUG = False
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 SECRET_KEY = env('SECRET_KEY')
 DATABASES = {

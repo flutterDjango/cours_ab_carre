@@ -10,6 +10,7 @@ psycopg = {extras = ["binary"], version = "*"}
 wagtail-markdown = "*"
 wagtail-django-recaptcha = "*"
 django-environ = "*"
+gunicorn = "*"
 
 [dev-packages]
 django-browser-reload = "*"
