@@ -19,7 +19,9 @@ Delete the line below if you're just getting started and want to remove the welc
 {% block content %}
     <section class="card-me-section">
         <div class="text-portrait">
-            <img class="portrait" src="{% static 'images/moi-4fondTransparent640-612-300x287.png'%}" alt=""/> 
+            {% comment %} <img class="portrait" src="{% static 'images/moi-4fondTransparent640-612-300x287.png'%}" alt=""/>  {% endcomment %}
+            <a href="/qui-suis-je/"> <img class="portrait" src="{{ MEDIA_URL }}images/moi-4fondTransparent640-612-300x287.png" alt="portrait"/></a>
+  
             <div class="text">
                 <h2>Philippe Maury</h2>
                 <p>Professeur de maths et de physique indépendant depuis 2004.</p>
