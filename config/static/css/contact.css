@@ -26,6 +26,16 @@
   justify-content: center; */
 } 
 
+input, textarea {
+  width: 50%;
+  font-size: 1.2rem; /* police plus grande */
+  padding: 12px;     /* padding pour espacement intérieur */
+  box-sizing: border-box; /* Inclure padding et border dans la largeur */
+}
+
+
+
+
 /* 
 .row{
   margin-left: 10px;

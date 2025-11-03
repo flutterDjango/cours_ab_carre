@@ -1,0 +1,7 @@
+.xp-section {
+    position: relative;
+    /* padding: 0 10px 62px; */
+    padding-bottom: 10px;
+    background-image: var(--striped-black-blue); 
+    z-index: -1;
+  }

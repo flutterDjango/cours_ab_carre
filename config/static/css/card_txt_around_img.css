@@ -49,7 +49,8 @@
   .text {
     margin-top: 25px;
     font-family: var(--base-font);
-    color: var(--dark-base)
+    color: var(--dark-base);
+    /* margin-bottom: 10px; */
   }
 
   

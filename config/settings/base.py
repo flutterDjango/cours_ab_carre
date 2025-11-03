@@ -19,11 +19,11 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 # env = environ.Env(DEBUG=(bool, False))
 env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-DEBUG = env.bool('DEBUG', default=False)
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+DEBUG = env.bool("DEBUG", default=False)
 # DEBUG = env('DEBUG')
-SECRET_KEY = env('SECRET_KEY')
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+SECRET_KEY = env("SECRET_KEY")
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "wagtailmarkdown",
-    'django_recaptcha',
+    "django_recaptcha",
     "wagtailcaptcha",
 ]
 
@@ -74,8 +74,8 @@ MIDDLEWARE = [
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 if DEBUG:
-    INSTALLED_APPS += ['django_browser_reload']
-    MIDDLEWARE += ['django_browser_reload.middleware.BrowserReloadMiddleware']
+    INSTALLED_APPS += ["django_browser_reload"]
+    MIDDLEWARE += ["django_browser_reload.middleware.BrowserReloadMiddleware"]
 
 ROOT_URLCONF = "config.urls"
 
@@ -92,7 +92,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                'django.template.context_processors.media',
+                "django.template.context_processors.media",
             ],
         },
     },
@@ -161,7 +161,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
 
-
 # Default storage settings, with the staticfiles storage updated.
 # See https://docs.djangoproject.com/en/5.0/ref/settings/#std-setting-STORAGES
 STORAGES = {
@@ -198,7 +197,18 @@ WAGTAILADMIN_BASE_URL = "http://example.com"
 # This can be omitted to allow all files, but note that this may present a security risk
 # if untrusted users are allowed to upload files -
 # see https://docs.wagtail.org/en/stable/advanced_topics/deploying.html#user-uploaded-files
-WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
+WAGTAILDOCS_EXTENSIONS = [
+    "csv",
+    "docx",
+    "key",
+    "odt",
+    "pdf",
+    "pptx",
+    "rtf",
+    "txt",
+    "xlsx",
+    "zip",
+]
 
 AUTH_USER_MODEL = "users.User"
 
@@ -219,3 +229,25 @@ WAGTAILMARKDOWN = {
 RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY")
 RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY")
 NOCAPTCHA = True
+
+
+EMAIL_BACKEND = (
+    "django.core.mail.backends.console.EmailBackend"
+    if DEBUG
+    else "django.core.mail.backends.smtp.EmailBackend"
+)
+
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_PORT = env("EMAIL_PORT")
+# EMAIL_USE_SSL peut arriver comme string "True"/"False" via .env,
+# environ gère la conversion si on l'indique :
+EMAIL_USE_SSL = env.bool("EMAIL_USE_SSL", default=True)
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD")
+
+CONTACT_FROM_EMAIL = env("CONTACT_FROM_EMAIL")
+CONTACT_TO_EMAIL = env("CONTACT_TO_EMAIL")
+CONTACT_EMAIL_SUBJECT = env(
+    "CONTACT_EMAIL_SUBJECT",
+    default="Nouveau message depuis le formulaire de contact",
+)
