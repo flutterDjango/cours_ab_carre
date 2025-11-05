@@ -60,7 +60,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "wagtailmarkdown",
     "django_recaptcha",
-    "wagtailcaptcha",
 ]
 
 MIDDLEWARE = [
@@ -230,20 +229,18 @@ RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY")
 RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY")
 NOCAPTCHA = True
 
-
-EMAIL_BACKEND = (
-    "django.core.mail.backends.console.EmailBackend"
-    if DEBUG
-    else "django.core.mail.backends.smtp.EmailBackend"
-)
-
+# EMAIL_BACKEND = (
+#     "django.core.mail.backends.console.EmailBackend"
+#     if DEBUG
+#     else "django.core.mail.backends.smtp.EmailBackend"
+# )
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = env("EMAIL_HOST")
-EMAIL_PORT = env("EMAIL_PORT")
-# EMAIL_USE_SSL peut arriver comme string "True"/"False" via .env,
-# environ gère la conversion si on l'indique :
+EMAIL_PORT = env.int("EMAIL_PORT")
+EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=False)
 EMAIL_USE_SSL = env.bool("EMAIL_USE_SSL", default=True)
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 
 CONTACT_FROM_EMAIL = env("CONTACT_FROM_EMAIL")
 CONTACT_TO_EMAIL = env("CONTACT_TO_EMAIL")
