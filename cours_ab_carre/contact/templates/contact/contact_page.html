@@ -7,10 +7,7 @@
     <h1 class="heading-2-dark">Contact</h1>
 
     <div class="narrow-container">
-      {% if intro_text %}
-        <div class="intro">{{ intro_text|safe }}</div>
-      {% endif %}
-
+    
       <form action="{% url 'contact:contact' %}" method="post">
         {% csrf_token %}
 

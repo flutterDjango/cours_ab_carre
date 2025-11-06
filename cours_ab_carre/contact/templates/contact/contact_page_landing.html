@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load wagtailcore_tags %}
 
 {% block content %}
   <section class="commun-section">
     <div class="large-container container">
       <div class="narrow-container">
-        <h2>Merci pour votre message !</h2>
-        <p>Nous vous répondrons dans les plus brefs délais.</p>
-        <p>Une copie de votre demande vient de vous être envoyée à l’adresse que vous avez indiquée. Le cas échéant, vérifiez votre dossier « spam » ou « indésirable ».</p>
-        <p>⚠️ Si vous avez mal saisi votre adresse ou si elle est obsolète, vous ne recevrez pas cette confirmation ni notre réponse.</p>
+        {% if thank_you_text %}
+          <div class="thank-you-text">{{ thank_you_text|richtext }}</div>
+        {% else %}
+          <p>Nous vous répondrons dans les plus brefs délais.</p>
+        {% endif %}
+
       </div>
     </div>
   </section>

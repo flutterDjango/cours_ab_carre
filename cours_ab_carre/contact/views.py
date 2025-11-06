@@ -1,25 +1,30 @@
-# contact/views.py
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.conf import settings
 from django.core.mail import get_connection, EmailMessage
-from .forms import ContactForm  # ton formulaire Django avec ReCAPTCHA intégré
+from django.conf import settings
+from wagtail.models import Site
+from .forms import ContactForm
+from .models import ContactSettings
 
 
 def contact_view(request):
+    # Récupérer les settings Wagtail pour le site actuel
+    current_site = Site.find_for_request(request)
+    if current_site is None:
+        current_site = Site.objects.get(is_default_site=True)
+    site_settings = ContactSettings.for_site(current_site)
+
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
-            # Récupération des données utilisateur
             name = form.cleaned_data.get("name")
             email = form.cleaned_data.get("email")
             message = form.cleaned_data.get("message")
 
-            # Contenu pour l'email admin
-            admin_subject = settings.CONTACT_EMAIL_SUBJECT
-            admin_body = f"Message depuis la page Contact\n\nNom: {name}\nEmail: {email}\n\nMessage:\n{message}"
+            # Valeurs Wagtail Settings
+            admin_subject = site_settings.get_email_subject()
+            admin_to = [site_settings.get_to_address()]
 
-            # Contenu pour l'email utilisateur
             confirmation_subject = f"Merci pour votre message, {name}"
             confirmation_body = (
                 f"Bonjour {name},\n\nMerci pour votre message !\n\n"
@@ -27,7 +32,7 @@ def contact_view(request):
                 "Nous vous répondrons dans les plus brefs délais."
             )
 
-            # Ouverture d'une connexion SMTP OVH
+            # Connexion SMTP OVH
             conn = get_connection(
                 backend="django.core.mail.backends.smtp.EmailBackend",
                 host=settings.EMAIL_HOST,
@@ -40,26 +45,24 @@ def contact_view(request):
             )
             conn.open()
 
-            # Envoi email admin
-            admin_email = EmailMessage(
+            # Email admin
+            EmailMessage(
                 subject=admin_subject,
-                body=admin_body,
+                body=f"Message depuis la page Contact\n\nNom: {name}\nEmail: {email}\n\nMessage:\n{message}",
                 from_email=settings.CONTACT_FROM_EMAIL,
-                to=[settings.CONTACT_TO_EMAIL],
+                to=admin_to,
                 connection=conn,
-            )
-            admin_email.send()
+            ).send()
 
-            # Envoi email confirmation à l'utilisateur
+            # Email de confirmation utilisateur
             if email:
-                user_email_msg = EmailMessage(
+                EmailMessage(
                     subject=confirmation_subject,
                     body=confirmation_body,
                     from_email=settings.CONTACT_FROM_EMAIL,
                     to=[email],
                     connection=conn,
-                )
-                user_email_msg.send()
+                ).send()
 
             # Redirection vers la page "merci"
             return redirect(reverse("contact:contact_thank_you"))
@@ -68,3 +71,15 @@ def contact_view(request):
         form = ContactForm()
 
     return render(request, "contact/contact_page.html", {"form": form})
+
+
+def thank_you_view(request):
+    current_site = Site.find_for_request(request) or Site.objects.get(
+        is_default_site=True
+    )
+    site_settings = ContactSettings.for_site(current_site)
+    return render(
+        request,
+        "contact/contact_page_landing.html",
+        {"thank_you_text": site_settings.thank_you_text},
+    )

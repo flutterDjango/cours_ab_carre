@@ -1,16 +1,11 @@
 # contact/urls.py
 from django.urls import path
-from .views import contact_view
-from django.views.generic import TemplateView
+from .views import contact_view, thank_you_view
+
 
 app_name = "contact"
+
 urlpatterns = [
     path("contact/", contact_view, name="contact"),
-    path(
-        "contact/merci/",
-        TemplateView.as_view(
-            template_name="contact/contact_page_landing.html"
-        ),
-        name="contact_thank_you",
-    ),
+    path("contact/thank-you/", thank_you_view, name="contact_thank_you"),
 ]
