@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     "wagtailmarkdown",
     "django_recaptcha",
     "wagtail.contrib.settings",
+    "django.contrib.sitemaps",
 ]
 
 MIDDLEWARE = [
